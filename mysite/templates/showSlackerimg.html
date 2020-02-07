@@ -1,0 +1,54 @@
+{% extends 'blog/__base__.html' %}
+{% block content %}
+
+
+    <style>
+        *{ margin:0; padding: 0; list-style: none; }
+        #list img{ width: 500px; height: 350px;}
+    </style>
+           <h3 > 图片懒加载技术 </h3>
+<ul id="list">
+    <li><img _src="/static/img/img1.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img2.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img3.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img4.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img5.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img6.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img7.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img8.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img9.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img10.png" alt="pic"/></li> <br>
+</ul>
+
+
+<script>
+      // 获取图片
+    var oImg = document.getElementsByTagName('img');
+    
+      fn();           // 先让第一张图展现
+      
+    window.onscroll = function(){
+        fn();         // 滚轮滚动事件
+        
+    };
+   
+    function fn(){
+        //判断图片是否在可视区内
+        for(var i=0; i<oImg.length; i++){
+            var oImgTo = oImg[i].offsetTop;
+            //元素距离页面顶端的距离
+            var clientH = document.documentElement.clientHeight;
+            //可视区的高度
+            var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
+            //可视区顶部距离页面顶部的距离
+
+            if(clientH + scrollT >= oImgTo){
+                oImg[i].src = oImg[i].getAttribute('_src');
+            }
+        }
+    }
+    //getAttribute() 方法根据名称取得属性值。
+</script>
+
+{% endblock  %}
+

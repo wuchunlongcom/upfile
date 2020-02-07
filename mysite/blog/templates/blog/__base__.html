@@ -49,13 +49,19 @@ background: #3ACC3A !important ;
 
 
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">测试<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示图片测试<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								
+								
+								<li>
+									 <a href="{% url 'showimg' %}">图片常规显示</a>
+								</li>
+								
+
 								<li class="divider"></li>
 
 								<li>
-									 <a href="{% url 'showimg' %}">图片懒加载技术</a>
+									 <a href="{% url 'showslackerimg' %}">图片懒加载技术显示</a>
 								</li>
 								<li class="divider"></li>
 								

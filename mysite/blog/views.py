@@ -61,12 +61,6 @@ def upload_file(request):
             return HttpResponseRedirect('/')
     return render(request, 'usercenter-info.html', {})
  
- 
-# 图片懒加载技术 http://localhost:8000/blog/showimg/    
-def showimg(request):
-    return render(request, 'showimg.html', {})
-    
-
 
 '''
 class UserView(View):
