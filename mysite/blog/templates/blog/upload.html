@@ -1,0 +1,12 @@
+{% extends 'blog/__base__.html' %}
+{% block content %}
+
+    <h3> 上传单个文件 </h3>
+    <form enctype="multipart/form-data" action="/blog/upload/" method="post">  
+       {% csrf_token %}
+       <input type="file" name="myfile" />  
+       <br/>  
+       <input type="submit" value="上传单个文件  提交"/>  
+    </form>  
+
+{% endblock %}
