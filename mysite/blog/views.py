@@ -63,29 +63,7 @@ def upload_file(request):
  
  
 # 图片懒加载技术 http://localhost:8000/blog/showimg/    
-def showimg(request):
-    return render(request, 'showimg.html', {})
+# def showimg(request):
+#     return render(request, 'showimg.html', {})
     
 
-
-'''
-class UserView(View):
-    """
-    用户个人信息
-    """
-    def get(self, request):
-        return render(request, 'usercenter-info.html', {})
-
-    def post(self, request):
-        
-        user_info_form = UploadImageForm(request.POST, request.FILES) 
-        print('user_info_form =====： ', user_info_form)
-        if user_info_form.is_valid():
-            
-            user_info_form.save()
-            print('111222 =====111222')
-            return HttpResponseRedirect('/admin/blog/courseorg/')
-            return HttpResponse('{"status":"success"}', content_type='application/json')
-        else:
-            return HttpResponse(json.dumps(user_info_form.errors), content_type='application/json')
-'''

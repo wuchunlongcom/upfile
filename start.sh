@@ -76,5 +76,5 @@ fi
 if [ "${OPT_ENV_FORCE}x" == "-dx" ];then
 	del_db
 fi
-# cp ${BASE_DIR}/mysite/db.sqlite3 ${BASE_DIR}/mysite/demo.sqlite3
+
 launch_webapp

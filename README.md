@@ -1,5 +1,5 @@
-python3.7.5  django2.1 部署正常       
-Bootstrap 框架               
+python3.7.5  django2.1 Bootstrap  部署正常       
+              
 
 ```
 1、上传单个文件     
