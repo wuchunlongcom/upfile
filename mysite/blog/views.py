@@ -62,7 +62,7 @@ def upload_file(request):
     return render(request, 'usercenter-info.html', {})
  
 
-from blog.myAPI.fileAPI import MyFile
+from myAPI.fileAPI import MyFile
 
 
 filepath = 'blog/static/img/'
