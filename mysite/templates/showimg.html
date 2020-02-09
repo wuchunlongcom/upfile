@@ -4,9 +4,9 @@
 
     <style>
         *{ margin:0; padding: 0; list-style: none; }
-        #list img{ width: 500px; height: 350px;}
+        #list img{ width: 500px; height: 480px;}
     </style>
-           <h3 > 图片懒加载技术显示 </h3>
+           <h2> 图片懒加载技术显示 </h2>
 <ul id="list">
     <li><img _src="/static/img/img1.png" alt="pic"/></li> <br>
     <li><img _src="/static/img/img2.png" alt="pic"/></li> <br>
@@ -25,7 +25,7 @@
       // 获取图片
     var oImg = document.getElementsByTagName('img');
     
-      fn();           // 先让第一张图展现
+      fn();   // 先让第一张图展现
       
     window.onscroll = function(){
         fn();         // 滚轮滚动事件
@@ -40,8 +40,8 @@
             var clientH = document.documentElement.clientHeight;
             //可视区的高度
             var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
-            //可视区顶部距离页面顶部的距离
-
+            
+            //可视区顶部距离页面顶部的距离,一行显示一个图片
             if(clientH + scrollT >= oImgTo){
                 oImg[i].src = oImg[i].getAttribute('_src');
             }

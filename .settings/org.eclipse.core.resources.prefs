@@ -2,7 +2,5 @@ eclipse.preferences.version=1
 encoding//mysite/blog/apps.py=utf-8
 encoding//mysite/blog/urls.py=utf-8
 encoding//mysite/blog/views.py=utf-8
-encoding//mysite/myAPI/fileAPI.py=utf-8
-encoding//mysite/myAPI/listdictAPI.py=utf-8
 encoding//mysite/myAPI/pageAPI.py=utf-8
 encoding//mysite/myAPI/videoURL.py=utf-8
