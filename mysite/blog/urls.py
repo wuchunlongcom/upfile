@@ -17,8 +17,9 @@ urlpatterns = [
     #url("image/upload/", UserView.as_view(), name='image_upload'), 
     url("image/upload/", views.upload_file, name='image_upload'),
      
-    # 图片懒加载技术 http://localhost:8000/blog/showimg/  
-    #url("showimg/", views.showimg, name='showimg'),
+    
+    url("imglist/", views.imglist, name='imglist'),
+    
     url(r'^showimg/$', IndexView.as_view(), name='showimg'),
     url(r'^showimg2/$', IndexView.as_view(template_name = 'showimg2.html'), name='showimg2'),      
 ]

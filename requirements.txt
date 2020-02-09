@@ -12,3 +12,4 @@ xlrd
 xlsxwriter
 requests
 lxml
+jieba
