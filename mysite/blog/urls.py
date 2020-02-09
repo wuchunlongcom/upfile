@@ -18,7 +18,7 @@ urlpatterns = [
     url("image/upload/", views.upload_file, name='image_upload'),
      
     
-    #url("imglist/", views.imglist, name='imglist'),
+    url("imglist/", views.imglist, name='imglist'),
     
     url(r'^showimg/$', IndexView.as_view(), name='showimg'),
     url(r'^showimg2/$', IndexView.as_view(template_name = 'showimg2.html'), name='showimg2'),      

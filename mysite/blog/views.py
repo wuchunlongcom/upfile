@@ -61,13 +61,13 @@ def upload_file(request):
             return HttpResponseRedirect('/')
     return render(request, 'usercenter-info.html', {})
  
-""" 
+
 from blog.myAPI.fileAPI import MyFile
 
 
 filepath = 'blog/static/img/'
-imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif','.tiff', '.php',\
-          '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', 'TIF', '.TIFF', '.PHP']
+imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.tiff', '.php',\
+          '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.TIFF', '.PHP']
   
 # 图片懒加载技术  http://localhost:8000/blog/imglist/
 def imglist(request):
@@ -77,5 +77,5 @@ def imglist(request):
     #print(img_list)
     return  render(request, 'imglist.html', context=locals())
 
-"""    
+   
 
