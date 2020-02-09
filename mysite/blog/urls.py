@@ -23,5 +23,5 @@ urlpatterns = [
     # 图片懒加载技术 http://localhost:8000/blog/showSlackerimg/  
     url(r'^showslackerimg/$', IndexView.as_view(template_name='show-Slackerimg.html'), name="showslackerimg"),     
 
-    url(r'^imglist/$', views.imglist, name="imglist"),
+    #url(r'^imglist/$', views.imglist, name="imglist"),
 ]
