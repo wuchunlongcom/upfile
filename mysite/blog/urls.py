@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url, include
-from . import views
+from blog import views
 #from .views import upload_file #UserView
 from django.views.static import serve 
 from django.urls import path,include,re_path
@@ -22,4 +22,6 @@ urlpatterns = [
      
     # 图片懒加载技术 http://localhost:8000/blog/showSlackerimg/  
     url(r'^showslackerimg/$', IndexView.as_view(template_name='show-Slackerimg.html'), name="showslackerimg"),     
+
+    url(r'^imglist/$', views.imglist, name="imglist"),
 ]

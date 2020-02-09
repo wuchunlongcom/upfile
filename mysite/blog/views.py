@@ -3,8 +3,24 @@ import os
 from django.shortcuts import render
 from django.contrib import messages
 from django.http.response import HttpResponseRedirect, HttpResponse
-from .forms import UploadImageForm
 from django.views.generic.base import View
+from .forms import UploadImageForm
+from myAPI.fileAPI import MyFile
+
+filepath = 'blog/static/img/'
+imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif','.tiff', '.php',\
+          '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', 'TIF', '.TIFF', '.PHP']
+
+# http://localhost:8000/blog/imglist/
+def imglist(request):
+    myfile = MyFile(filepath, imgExt)   
+    img_list = myfile.toNameList() # ['blog/static/img/1.jpg', ...]
+    img_list = ['/static%s' %i.split('static')[-1] for i in img_list] # ['/static/img/1.jpg'
+    #print(img_list)
+    return  render(request, 'imglist.html', context=locals())
+
+
+
 
 # http://localhost:8000/blog/index/
 def index(request):
