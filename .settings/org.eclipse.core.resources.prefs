@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
+encoding//mysite/blog/admin.py=utf-8
 encoding//mysite/blog/apps.py=utf-8
+encoding//mysite/blog/models.py=utf-8
 encoding//mysite/blog/myAPI/fileAPI.py=utf-8
 encoding//mysite/blog/myAPI/listdictAPI.py=utf-8
 encoding//mysite/blog/myAPI/pageAPI.py=utf-8

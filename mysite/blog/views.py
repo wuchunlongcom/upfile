@@ -61,7 +61,7 @@ def upload_file(request):
             return HttpResponseRedirect('/')
     return render(request, 'usercenter-info.html', {})
  
- 
+""" 
 from blog.myAPI.fileAPI import MyFile
 
 
@@ -77,5 +77,5 @@ def imglist(request):
     #print(img_list)
     return  render(request, 'imglist.html', context=locals())
 
-    
+"""    
 

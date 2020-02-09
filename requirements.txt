@@ -13,3 +13,4 @@ xlsxwriter
 requests
 lxml
 jieba
+pypinyin
