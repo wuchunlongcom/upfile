@@ -15,10 +15,12 @@ urlpatterns = [
     
     #用户图像上传
     #from .views import upload_file #UserView
-    #url("image/upload/", UserView.as_view(), name='image_upload'), 
+    #url("image/upload/", UserView.as_view(), name='image_upload'),  api_upfile_save
     url("image/upload/", views.upload_file, name='image_upload'),
     
     url(r'^showimg/$', IndexView.as_view(), name='showimg'),
     url(r'^showimg2/$', IndexView.as_view(template_name = 'showimg2.html'), name='showimg2'),
-    url("imglist/", views.imglist, name='imglist'),      
+    url("imglist/", views.imglist, name='imglist'),
+    url("api_upfile_save/", views.api_upfile_save, name='api_upfile_save'),  
+         
 ]

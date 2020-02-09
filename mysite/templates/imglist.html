@@ -13,23 +13,22 @@
     }
     myli{
       float: left;
-      width: 50%;
-      height: 400px;
+      width: 285px;
+      height: 240px;
       padding: 10px;
     }
     myli img{
       display: inline-block;
-      width: 100%;
-      height: 100%;
+      width: 276px;
+      height: 230px;
     }
   </style>
 
 <div class="container">
+  <h2> 展示图片懒加载技术效果 图片规格 276x230 </h2>
   <myul>
-    
-    {% for img in img_list %}
-      <myli><img data-src={{img}} alt="美图"></myli> 
-    {% endfor %}
+
+    <h4> 下面使用图片 data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg" 展示图片懒加载技术效果。django模板使用这种图片不需要加载时间的</h4>
     <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></myli>
     <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></myli>
     <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></myli>
@@ -45,7 +44,15 @@
     <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg"></myli>
     <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg"></myli>
     <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg"></myli>
-    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg"></myli> 
+
+    
+    <h4> django模板，使用后台上传的图片，展示图片懒加载技术效果。可以上传一张试试...</h4>
+
+    {% for img in img_list %}
+      <myli><img data-src={{img}} alt="美图"></myli> 
+    {% endfor %}
+
   </myul>
 </div>
 <script>

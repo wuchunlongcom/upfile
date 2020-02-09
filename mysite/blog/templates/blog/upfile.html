@@ -1,0 +1,136 @@
+{% extends 'blog/__base__.html' %}
+{% block content %}
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/fileinput.min.js"></script>
+	
+	<script>	
+        var xhr;
+        var ot;
+        var oloaded;
+        var time;
+        var url = "/blog/api_upfile_save/"; //后端url
+        
+    
+		// with plugin options
+		$("#fileToUpload").fileinput({'showUpload':false, 'previewFileType':'any'});
+
+        function fileSelected() {
+            var file = document.getElementById('fileToUpload').files[0];
+            if (file) {
+                var fileSize = 0;
+                if (file.size > 1024 * 1024){
+                    fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+                }
+                else{
+                    fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+                }
+                document.getElementById('fileName').innerHTML = 'Name: ' + file.name;
+                document.getElementById('fileSize').innerHTML = 'Size: ' + fileSize;
+                document.getElementById('fileType').innerHTML = 'Type: ' + file.type;
+                uploadFile();
+            }
+        }
+
+        function uploadFile() {
+            
+            var fd = new FormData();
+            //upfile 名字随便
+            fd.append("upfile", document.getElementById('fileToUpload').files[0]); 
+    
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("POST", url, true);
+            xhr.upload.addEventListener("progress", uploadProgress, true);
+            xhr.addEventListener("load", uploadComplete, false);
+            xhr.addEventListener("error", uploadFailed, false);
+            xhr.addEventListener("abort", uploadCanceled, false);
+            
+            xhr.upload.onloadstart = function(){//上传开始执行方法
+                ot = new Date().getTime();   //设置上传开始时间
+                oloaded = 0;//设置上传开始时，以上传的文件大小为0
+            };
+            xhr.send(fd);
+            
+        }
+
+        function uploadProgress(evt) {
+            if (evt.lengthComputable) {
+                progressBar.max = evt.total;
+                progressBar.value = evt.loaded;
+                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+                document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '%';
+
+                var time = document.getElementById("time");
+                var nt = new Date().getTime();//获取当前时间
+                var pertime = (nt-ot)/1000; //计算出上次调用该方法时到现在的时间差，单位为s
+                ot = new Date().getTime(); //重新赋值时间，用于下次计算
+            
+                var perload = evt.loaded - oloaded; //计算该分段上传的文件大小，单位b       
+                oloaded = evt.loaded;//重新赋值已上传文件大小，用以下次计算
+        
+                //上传速度计算
+                var speed = perload/pertime;//单位b/s
+                var bspeed = speed;
+                var units = 'b/s';//单位名称
+                if(speed/1024>1){
+                    speed = speed/1024;
+                    units = 'k/s';
+                }
+                if(speed/1024>1){
+                    speed = speed/1024;
+                    units = 'M/s';
+                }
+                speed = speed.toFixed(1);
+                //剩余时间
+                var resttime = ((evt.total-evt.loaded)/bspeed).toFixed(1);
+                time.innerHTML = '，速度：'+speed+units+'，剩余时间：'+resttime+'s';
+                if(resttime == 0.0)
+                    time.innerHTML = '完成';
+
+            }
+            else {
+                document.getElementById('progressNumber').innerHTML = 'unable to compute';
+            }
+        }
+
+        function uploadComplete(evt) {
+            /* This event is raised when the server send back a response */
+            //alert(JSON.stringify(evt));            
+            alert(evt.target.responseText);
+        }
+        
+
+        function uploadFailed(evt) {
+            alert("There was an error attempting to upload the file.");
+        }
+
+        function uploadCanceled(evt) {
+            alert("The upload has been canceled by the user or the browser dropped the connection.");
+        }
+
+	</script>
+
+<div class="col-md-12 column">
+    
+    <div class="col-md-2 column"> </div>
+    <div class="col-md-8 column"><br>
+        <h2 style="margin: 0px auto;display: table;" > 文件上传 进度条 </h2><br>
+    	<progress id="progressBar" value="0" max="100" style="height:30px; width: 800px;"></progress>  
+    	<span id="progressNumber"></span> <span id="time"></span>
+
+        <div>
+        	<div id="fileName" style="display:inline"> </div>
+        	<div id="fileSize" style="display:inline"> </div>
+        	<div id="fileType" style="display:inline"> </div> 
+        </div>
+        	              
+        <!-- 传统的方法：先选择文件，再上传
+    	<input type="file" id="fileToUpload" name="fileToUpload" />
+    	<input type="button" onclick="UpladFile()" value="上传" /> -->
+    	<!-- 选择文件后直接上传 -->
+        <input type="file" class="file" data-preview-file-type="text" name="fileToUpload" id="fileToUpload" multiple="multiple" onchange="fileSelected();" style="display:inline"/>      
+    </div>
+</div>   
+
+{% endblock %}
