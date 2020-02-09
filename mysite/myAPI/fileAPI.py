@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-#from blog.myAPI.listdictAPI import  listdictAPI
-from myAPI.listdictAPI import  listdictAPI
+from .listdictAPI import  listdictAPI
 
 class MyFile:
     """

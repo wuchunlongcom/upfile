@@ -4,10 +4,6 @@
    
 2017.1.16
 '''
-# import json
-# import jieba  #中文分词
-# from pypinyin import lazy_pinyin
-
     
 class listdictAPI:
     def __init__(self, myList, myStr):

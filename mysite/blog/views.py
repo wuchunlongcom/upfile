@@ -3,8 +3,16 @@ import os
 from django.shortcuts import render
 from django.contrib import messages
 from django.http.response import HttpResponseRedirect, HttpResponse
-from .forms import UploadImageForm
 from django.views.generic.base import View
+from .forms import UploadImageForm
+from myAPI.fileAPI import MyFile
+
+
+filepath = 'blog/static/img/'
+imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.tiff', '.php',\
+          '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.TIFF', '.PHP']
+
+
 
 # http://localhost:8000/blog/index/
 def index(request):
@@ -61,13 +69,6 @@ def upload_file(request):
             return HttpResponseRedirect('/')
     return render(request, 'usercenter-info.html', {})
  
-
-from myAPI.fileAPI import MyFile
-
-
-filepath = 'blog/static/img/'
-imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.tiff', '.php',\
-          '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.TIFF', '.PHP']
   
 # 图片懒加载技术  http://localhost:8000/blog/imglist/
 def imglist(request):
