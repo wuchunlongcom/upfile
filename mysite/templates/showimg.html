@@ -1,327 +1,54 @@
 {% extends 'blog/__base__.html' %}
 {% block content %}
-   
-    <!--[if lt IE 9]>
-    <script src="https://www.mom1.cn/wp-content/themes/begin/js/html5.js"></script>
-    <script src="https://www.mom1.cn/wp-content/themes/begin/js/css3-mediaqueries.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" id="begin-style-css" href="/static/css/css/style.css" type="text/css" media="all">
+
 
     <style>
         *{ margin:0; padding: 0; list-style: none; }
-        #list img{width:272px; height: 180px;}
+        #list img{ width: 500px; height: 350px;}
     </style>
-
-
-<div id="page" class="hfeed site">
-    <div id="content" class="site-content">
-        <section id="picture" class="content-area">
-            <main id="main" class="site-main" role="main">
-                
+           <h3 > 图片懒加载技术显示 </h3>
 <ul id="list">
-                <h3 > 图片常规显示 </h3>
-                <div class="clear"></div>
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H1</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H2</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H3</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H4</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H5</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H6</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H7</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图8</a></h3>    
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图9 240x200</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图10 240x200</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图11 240x200</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图12 240x200</a></h3>   
-                    </div>
-                </article>
-
-
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/240x200_6.png" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图6 240x200</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/240x200_7.png" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图7 240x200</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/240x200_8.png" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图8 240x200</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/240x200_9.png" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图9 240x200</a></h3>   
-                    </div>
-                </article>
-
-
-
-                <h2> 大小不一样的图片 </h2>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/1.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H1</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/2.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H2</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/3.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H3</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/4.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H4</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/5.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H5</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/6.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H6</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/7.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图H7</a></h3>  
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/8.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图8</a></h3>    
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/9.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图9 </a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/10.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图10</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/11.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图11</a></h3>   
-                    </div>
-                </article>
-
-                <article class="post-5340 picture type-picture status-publish hentry gallery-img rrz">
-                    <div class="picture-box wow fadeInUp" data-wow-delay="0.3s">
-                        <figure class="picture-img">
-                            <a href="#">
-                            <img src="/static/img/12.jpg" alt="美图H"></a>
-                        </figure>
-                        <h3 class="picture-title"><a href="#" rel="bookmark">美图12</a></h3>   
-                    </div>
-                </article>
-
-               
-
-
-
+    <li><img _src="/static/img/img1.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img2.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img3.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img4.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img5.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img6.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img7.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img8.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img9.png" alt="pic"/></li> <br>
+    <li><img _src="/static/img/img10.png" alt="pic"/></li> <br>
 </ul>
 
 
-            </main>
-            <div class="clear"></div>
-        </section>
-    </div><!-- .site-content -->
+<script>
+      // 获取图片
+    var oImg = document.getElementsByTagName('img');
+    
+      fn();           // 先让第一张图展现
+      
+    window.onscroll = function(){
+        fn();         // 滚轮滚动事件
+        
+    };
+   
+    function fn(){
+        //判断图片是否在可视区内
+        for(var i=0; i<oImg.length; i++){
+            var oImgTo = oImg[i].offsetTop;
+            //元素距离页面顶端的距离
+            var clientH = document.documentElement.clientHeight;
+            //可视区的高度
+            var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
+            //可视区顶部距离页面顶部的距离
 
-<div>
+            if(clientH + scrollT >= oImgTo){
+                oImg[i].src = oImg[i].getAttribute('_src');
+            }
+        }
+    }
+    //getAttribute() 方法根据名称取得属性值。
+</script>
 
-{% endblock %}
+{% endblock  %}
 

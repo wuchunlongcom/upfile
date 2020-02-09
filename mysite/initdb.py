@@ -10,7 +10,7 @@ if __name__ == "__main__":
     django.setup()
     from django.contrib.auth.models import User, Group, Permission
         
-    user = User.objects.create_superuser('admin', 'admin@test.com','admin')
+    user = User.objects.create_superuser('admin', 'admin@test.com','1234qazx')
     user.save()
     
         
