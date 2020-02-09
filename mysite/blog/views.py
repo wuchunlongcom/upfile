@@ -73,7 +73,7 @@ def upload_file(request):
         if form.is_valid():            
             # 保存上传的图像文件。保存路径分别由settings.py和models.py设置
             form.save() 
-            print('request.raw_post_data======', request.raw_post_data) 
+            #print('request.raw_post_data======', request.raw_post_data) 
             return HttpResponseRedirect('/')
     return render(request, 'usercenter-info.html', {})
  

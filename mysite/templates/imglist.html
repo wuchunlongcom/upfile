@@ -1,12 +1,6 @@
 {% extends 'blog/__base__.html' %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>原生js实现图片懒加载</title>
-  <!-- https://www.jianshu.com/p/0cf0ec38f39f -->
   <style>
     *{
       margin: 0;
@@ -29,9 +23,8 @@
       height: 100%;
     }
   </style>
-</head>
-<body>
-<div class="container1">
+
+<div class="container">
   <myul>
     
     {% for img in img_list %}
@@ -117,6 +110,5 @@
 
   
 </script>
-</body>
-</html>
+
 {% endblock %}
