@@ -36,8 +36,13 @@ def upfile_save(filepath, mode):
     保存上传文件：上传文件名添加当前时间，上传文件不会覆盖
     """
     name, etx = os.path.splitext(mode.name)
-    filename = '%s-%s%s' %(name, datetime.datetime.now().strftime('%Y%m%d[%H:%M:%S]'), etx)    
-    destination = open(os.path.join(filepath, filename), 'wb+')  # 打开特定的文件进行二进制的写操作  
-    for chunk in mode.chunks():  # 分块写入文件  
-        destination.write(chunk)  
-    destination.close() 
+    filename = '%s-%s%s' %(name, datetime.datetime.now().strftime('%Y%m%d[%H:%M:%S]'), etx)  
+    try:
+        f = open(os.path.join(filepath, filename), 'wb+')  # 打开特定的文件进行二进制的写操作
+        for chunk in mode.chunks():  # 分块写入文件  
+            f.write(chunk)      
+    except Exception as ex:
+        return str(ex)    
+    f.close() 
+    return 'ok'  
+    

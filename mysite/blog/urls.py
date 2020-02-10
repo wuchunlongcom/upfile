@@ -11,6 +11,7 @@ class IndexView(TemplateView):
 urlpatterns = [
     url(r'^index/$', views.index, name="index"),
     url(r'^upload/$', views.upload, name="upload"),
+    url(r'^upfile/$', views.upfile, name="upfile"),
     url(r'^upfolder/$', views.upfolder, name="upfolder"),
     
     #用户图像上传
