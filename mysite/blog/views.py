@@ -11,13 +11,9 @@ from django.http import JsonResponse
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#UP_IMG_PATH = os.path.join(BASE_DIR,'static', 'img') # 部署时用此目录
-#UP_IMG_PATH = os.path.join('./blog','static', 'img') # 本地调试运行时用此目录
-UP_IMG_PATH = './blog/static/img' 
-#print('UP_IMG_PATH=====', UP_IMG_PATH)
 
 
+IMG_PATH = './blog/static/img'
 file_html = './blog/templates/uphtml'
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
           '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
@@ -36,9 +32,9 @@ def upload(request):
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')   
-        res = upfile_save(UP_IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间
-        #shutil.copy('./blog/static/img/%s' %upfile.name, './static_common/img')
+        res = upfile_save(IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间        
         messages.info(request, res)
+        return HttpResponseRedirect('/')
         return HttpResponseRedirect('/blog/list/img/')     
     return  render(request, 'blog/upload.html', context=locals())
 
@@ -106,7 +102,7 @@ def image_upload(request):
   
 # 图片懒加载显示图片技术  http://localhost:8000/blog/list/img/
 def list_img(request):
-    myfile = MyFile(UP_IMG_PATH, imgExt)   
+    myfile = MyFile(IMG_PATH, imgExt)   
     list_img = myfile.toNameList() # ['blog/static/img/1.jpg', ...]
     list_img = ['%s' %i.split('/static/')[-1] for i in list_img] # ['img/1.jpg', ...]
     if list_img == ['']:
