@@ -37,7 +37,7 @@ def upload(request):
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')   
         res = upfile_save(UP_IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间
-        shutil.copy('./blog/static/img/%s' %upfile.name, './static/img')
+        shutil.copy('./blog/static/img/%s' %upfile.name, './static_common/img')
         messages.info(request, res)
         return HttpResponseRedirect('/blog/list/img/')     
     return  render(request, 'blog/upload.html', context=locals())
