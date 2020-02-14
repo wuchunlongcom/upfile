@@ -14,7 +14,7 @@ from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #UP_IMG_PATH = os.path.join(BASE_DIR,'static', 'img') # 部署时用此目录
 #UP_IMG_PATH = os.path.join('./blog','static', 'img') # 本地调试运行时用此目录
-UP_IMG_PATH = './static/img' 
+UP_IMG_PATH = './blog/static/img' 
 #print('UP_IMG_PATH=====', UP_IMG_PATH)
 
 
@@ -37,6 +37,7 @@ def upload(request):
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')   
         res = upfile_save(UP_IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间
+        shutil.copy('./blog/static/img/%s' %upfile.name, './static/img')
         messages.info(request, res)
         return HttpResponseRedirect('/blog/list/img/')     
     return  render(request, 'blog/upload.html', context=locals())
