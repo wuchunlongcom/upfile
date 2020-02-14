@@ -11,7 +11,9 @@ from django.http import JsonResponse
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 
-UP_IMG_PATH = os.path.join('./static', 'img') # 部署时用此目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+UP_IMG_PATH = os.path.join(BASE_DIR,'static', 'img') # 部署时用此目录
 #UP_IMG_PATH = os.path.join('./blog','static', 'img') # 本地调试运行时用此目录
  
 file_html = './blog/templates/uphtml'
@@ -106,6 +108,7 @@ def list_img(request):
     list_img = ['%s' %i.split('/static/')[-1] for i in list_img] # ['img/1.jpg', ...]
     if list_img == ['']:
         list_img = []
+    #print('list_html======', list_img)
     return  render(request, 'list-img.html', context=locals())
 
 #  http://localhost:8000/blog/list/html/
@@ -113,6 +116,7 @@ def list_html(request):
     myfile = MyFile(file_html, htmlExt)   
     list_html = myfile.toNameList() # ['/blog/templates/uphtml/1.html', ...]
     list_html = ['%s' %i.split('templates/')[-1] for i in list_html] # ['uphtml/1.html', ...]
+    
     return  render(request, 'list-html.html', context=locals())
 
 def show_html(request):
