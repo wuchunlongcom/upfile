@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
     
     #静态文件 STATIC_ROOT
-    re_path(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS }),
+    #re_path(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS[0] }),
 
     
     url(r'^blog/', include('blog.urls')),
