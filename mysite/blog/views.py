@@ -11,7 +11,7 @@ from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 #from mysite.settings import MEDIA_ROOT
 
-file_img = './blog/static/img'
+file_img = './static_common/img'
 file_html = './blog/templates/uphtml'
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
           '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
@@ -100,8 +100,9 @@ def image_upload(request):
 def list_img(request):
     myfile = MyFile(file_img, imgExt)   
     list_img = myfile.toNameList() # ['blog/static/img/1.jpg', ...]
-    list_img = ['%s' %i.split('/static/')[-1] for i in list_img] # ['img/1.jpg', ...]
-    
+    list_img = ['%s' %i.split('/static_common/')[-1] for i in list_img] # ['img/1.jpg', ...]
+    if list_img == ['']:
+        list_img = []
     print('list_img======', list_img)
     return  render(request, 'list-img.html', context=locals())
 
