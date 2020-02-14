@@ -49,8 +49,8 @@
     
     <h4> django模板，使用后台上传的图片，展示图片懒加载技术效果。可以上传一张试试...</h4>
 
-    {% for img in img_list %}
-      <myli><img data-src={{img}} alt="美图"></myli> 
+    {% for img in list_img %}
+      <myli><img src="" alt="" data-src={{img}} alt="美图"></myli> 
     {% endfor %}
 
   </myul>
