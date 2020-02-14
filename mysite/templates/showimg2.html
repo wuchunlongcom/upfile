@@ -42,10 +42,10 @@
             //可视区的高度
             var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
             //console.log('可视区的高度:'+scrollT);
-            //可视区顶部距离页面顶部的距离   一行显示两个图片
+            //可视区顶部距离页面顶部的距离   一行显示2个图片
             if(clientH + scrollT >= oImgTo){
                 oImg[i].src = oImg[i].getAttribute('_src'); 
-                oImg[i+1].src = oImg[i].getAttribute('_src');
+                oImg[i+1].src = oImg[i+1].getAttribute('_src');
             }
         }
     }

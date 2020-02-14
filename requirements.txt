@@ -2,7 +2,7 @@ gevent
 gunicorn
 markdown2
 pymysql
-django==2.1
+django==2.2.6
 djangorestframework
 markdown 
 django-filter

@@ -1,4 +1,4 @@
-{% extends 'usercenter-base.html' %}
+{% extends 'blog/usercenter-base.html' %}
 
 
 {% block custom_right_content %}
@@ -7,9 +7,9 @@
 			<div class="head" style="border:1px solid #eaeaea;">
 				<h1>个人信息</h1>
 			</div>
+             MEDIA_URL ==== {{ MEDIA_URL }} <br>
+            MEDIA_ROOT === {{ MEDIA_ROOT }}
 			
-            MEDIA_URL1 ==== {{ MEDIA_URL }} <br>
-            MEDIA_ROOT === {{MEDIA_ROOT1}}
             <div class="inforcon">
 				<div class="left" style="width:242px;">
                     <iframe id='frameFile' name='frameFile' style='display: none;'></iframe>

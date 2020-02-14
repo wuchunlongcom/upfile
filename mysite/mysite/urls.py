@@ -21,6 +21,9 @@ from django.views.generic import RedirectView
 from django.views.static import serve 
 from mysite.settings import MEDIA_ROOT
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
@@ -32,3 +35,5 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^$', RedirectView.as_view(url='/blog/index/', query_string=True)),
 ]
+# urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

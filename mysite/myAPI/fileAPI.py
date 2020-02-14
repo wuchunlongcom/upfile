@@ -31,18 +31,62 @@ class MyFile:
             filepathList = ['']            
         return filepathList
 
+
+def readtxt_to_list(filename):
+    """
+        功能：读文本文件（抛弃空行），返回列表    
+    """
+    try:
+        with open(filename,'r') as f:
+            lines = f.readlines()
+            return [l  for l in lines if l.strip()] #抛弃空行 
+        return ['']
+    except Exception as ex:
+        return ['']
+        
+def read_txt(filename):
+    """
+        功能：读文本文件（抛弃空行），返回字符串    
+    """
+    return ''.join(readtxt_to_list(filename))
+
+
+def write_txt(filename, txt): 
+    """
+        功能：保存文本文件，适用于小文本文件
+    """   
+    ret = False
+    with open(filename,'w+') as f:
+        f.write(txt)
+        ret = True
+    return ret
+
+
+
+
 def upfile_save(filepath, mode):
     """
-    保存上传文件：上传文件名添加当前时间，上传文件不会覆盖
+        保存上传文件：上传文件同名会覆盖
+    """
+    filename = os.path.join(filepath, mode.name)
+    return savefile(filename, mode)
+
+def upfile_save_time(filepath, mode):
+    """
+        保存上传文件：上传文件名添加当前时间，上传文件不会覆盖
     """
     name, etx = os.path.splitext(mode.name)
     filename = '%s-%s%s' %(name, datetime.datetime.now().strftime('%Y%m%d[%H:%M:%S]'), etx)  
+    filename = os.path.join(filepath, filename)
+    return savefile(filename, mode)
+    
+def savefile(filename, mode):    
     try:
-        f = open(os.path.join(filepath, filename), 'wb+')  # 打开特定的文件进行二进制的写操作
+        f = open(filename, 'wb+')  # 打开特定的文件进行二进制的写操作
         for chunk in mode.chunks():  # 分块写入文件  
             f.write(chunk)      
     except Exception as ex:
         return str(ex)    
     f.close() 
-    return 'ok'  
+    return 'UpFile: %s. add nowTime. UpFile Success!' %(filename)  
     

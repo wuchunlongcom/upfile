@@ -12,10 +12,10 @@ function logging {
 }
 
 function build_venv {
-    # if [ ! -d env ]; then
-    #     virtualenv env
-    # fi
-    # . env/bin/activate
+    if [ ! -d env375 ]; then
+        virtualenv env375
+    fi
+    . env375/bin/activate
 
     pip3 install -r requirements.txt
 }
@@ -24,7 +24,7 @@ function build_venv {
 function del_db {
     logging "Clean"
     rm -rf "${BASE_DIR}/mysite/db.sqlite3"
-    rm -rf "${BASE_DIR}/mysite/blog/migrations/0001_initial.py"
+    rm -rf "${BASE_DIR}/mysite/blog/migrations/0*.*"
     ls "${BASE_DIR}/mysite/blog/migrations/"
 }
 function creator_db {

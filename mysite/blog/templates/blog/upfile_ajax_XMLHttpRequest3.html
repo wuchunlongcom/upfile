@@ -4,7 +4,14 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/fileinput.min.js"></script>
 	
-	<script>	
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> <!--CSRF-->
+
+
+	<script>
+
+     $.ajaxSetup({
+            data:{csrfmiddlewaretoken:'{{ csrf_token }}'}
+        })	
         var xhr;
         var ot;
         var oloaded;
@@ -33,14 +40,18 @@
         }
 
         function uploadFile() {
-            
+            var csrftoken = $.cookie('csrftoken'); // CSRF
+
             var fd = new FormData();
             //upfile 名字随便
             fd.append("upfile", document.getElementById('fileToUpload').files[0]); 
     
             var xhr = new XMLHttpRequest();
-
+            
             xhr.open("POST", url, true);
+
+            xhr.setRequestHeader('X-CSRFToken',csrftoken);  // CSRF
+
             xhr.upload.addEventListener("progress", uploadProgress, true);
             xhr.addEventListener("load", uploadComplete, false);
             xhr.addEventListener("error", uploadFailed, false);

@@ -1,14 +1,14 @@
-python3.7.5  django2.1 Bootstrap  部署正常       
-              
+### upfile                        
 
 ```
-https://github.com/wuchunlongcom/upfile
-1、上传单个文件     
+1、上传单个文件、上传文件进度条、CSRF验证。     
 2、批量上传文件，上传目录(支持多个目录)中的所有文件。不能上传目录(结构)，只会把目录和其子目录的文件上传而不会上传目录。      
-3、js原生图片懒加载     
+3、正确使用myAPI
+4、js原生图片懒加载     
 ```
 
 ```
-问题：   
-  1、Forbidden (CSRF token missing or incorrect.): /blog/api_upfile_save/
+TEL: 134 0255 3918
+EMAIL: wuchunlongcom@outlook.com     
+DATE: 2019.12.20
 ```

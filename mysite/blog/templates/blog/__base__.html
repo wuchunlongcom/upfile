@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8"> 
     <title>Bootstrap 实例 - 代码</title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <style>
 /* 导航栏颜色设置 */
 .navbar-nav a:hover { 
@@ -15,6 +15,8 @@ background: #3ACC3A !important ;
 .navbar-nav a:focus { 
 background: #3ACC3A !important ;
 }
+
+
 .dropdown a:hover { 
 background: #3ACC3A !important ;
 }
@@ -37,19 +39,40 @@ background: #3ACC3A !important ;
 							 <a href="/blog/index/">HOME</a>
 						</li>
 						<li class="dropdown">
-							 <a href="/blog/upload/">最简单的上传文件</a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传文件<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li><a href="{% url 'upload' %}"> form上传单个图像文件 </a></li>
+								<li><a href="{% url 'uphtml' %}"> form上传单个html文件 </a></li>
+								<li class="divider"></li>
+                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest1' %}"> upfile_ajax_XMLHttpRequest1 </a></li>
+                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest2' %}"> upfile_ajax_XMLHttpRequest2 </a></li>
+                                 <li><a href="{% url 'upfile_ajax_XMLHttpRequest3' %}"> upfile_ajax_XMLHttpRequest3 </a></li>
+
+							 
+							</ul>
 					    </li>
+
+						
+
 					    <li class="dropdown">
-							 <a href="/blog/upfile/">XMLHttpRequest 8888 API上传文件</a>
-					    </li>
-					    <li class="dropdown">
-							 <a href="/blog/upfolder/">上传目录中的所有文件</a>
+							 <a href="/blog/upfolder/">上传目录内所有文件</a>
 					    </li>
 
 					    <li class="dropdown">
-							 <a href="{% url 'image_upload' %}">选择文件后就上传文件</a>
+							 <a href="{% url 'image_upload' %}">选择文件就上传</a>
 					    </li>
 
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示html<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								
+								<li class="divider"></li>
+
+								<li>
+									 <a href="{% url 'list_html' %}"> html列表</a>
+								</li>
+						    </ul>
+                        </li>
 
 
 						<li class="dropdown">
@@ -67,7 +90,7 @@ background: #3ACC3A !important ;
 								</li>
 								<li class="divider"></li>
 								<li>
-									 <a href="{% url 'imglist' %}">图片懒加载技术3</a>
+									 <a href="{% url 'list_img' %}">图片懒加载技术3</a>
 								</li>
 								<li class="divider"></li>
 								
@@ -85,7 +108,7 @@ background: #3ACC3A !important ;
 		{% block content %}{% endblock %}
 
 	{% if messages %} <!--messages消息 width:60px;-->
-        <div  style="height:60px;width:972px;color:#f00;font-size:16px; padding-left:4px;padding-top:2px;background-color:#fff; border:1px solid #ccc;word-wrap:break-word; overflow:auto;overflow-y:auto;margin-left:76px;">           
+        <div  style="height:60px;width:972px;color:#3ACC3A;font-size:16px; padding-left:4px;padding-top:2px;background-color:#fff; border:1px solid #ccc;word-wrap:break-word; overflow:auto;overflow-y:auto;margin-left:76px;">           
                 {% for message in messages %}
                     <li>{{ message }}</li> 
                 {% endfor %}

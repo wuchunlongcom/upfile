@@ -1,0 +1,17 @@
+{% extends 'blog/__base__.html' %}
+{% block content %}
+
+<div class="col-md-12 column">
+  <div class="row clearfix">
+        <div class="col-md-2 column"> </div>
+        <div class="col-md-8 column">
+          {% for l in list_html %}
+            <a href="/blog/show/html/?h={{l}}"> {{l}} </a>  <br>
+                                   
+          {% endfor %}
+        </div>
+        
+    </div>
+  </div>
+</div>
+{% endblock %}
