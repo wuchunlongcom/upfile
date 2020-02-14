@@ -26,7 +26,11 @@ SECRET_KEY = 'm*#@l&s7f@ad&ei!d=bxx+@6b0hqoy-sql#4zo00s2%^s@8rbv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ["*"]
+=======
+ALLOWED_HOSTS = ['*']
+>>>>>>> 4b4e71e6fd6a678fc7cf6230d3cdd1e0d9d9ce22
 
 
 # Application definition
