@@ -13,13 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.urls import path, re_path
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import RedirectView
 
 from django.views.static import serve 
-from mysite.settings import MEDIA_ROOT
+from mysite.settings import MEDIA_ROOT, STATICFILES_DIRS
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,6 +32,10 @@ urlpatterns = [
     
     # 处理 media 信息，用于图片获取
     url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
+    
+    #静态文件
+    re_path(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS }),
+
     
     url(r'^blog/', include('blog.urls')),
     url(r'^$', RedirectView.as_view(url='/blog/index/', query_string=True)),
