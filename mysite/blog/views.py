@@ -11,11 +11,13 @@ from django.http import JsonResponse
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-UP_IMG_PATH = os.path.join(BASE_DIR,'static', 'img') # 部署时用此目录
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#UP_IMG_PATH = os.path.join(BASE_DIR,'static', 'img') # 部署时用此目录
 #UP_IMG_PATH = os.path.join('./blog','static', 'img') # 本地调试运行时用此目录
- 
+UP_IMG_PATH = './static/img' 
+#print('UP_IMG_PATH=====', UP_IMG_PATH)
+
+
 file_html = './blog/templates/uphtml'
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
           '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
@@ -34,7 +36,7 @@ def upload(request):
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')   
-        res = upfile_save_time(UP_IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间
+        res = upfile_save(UP_IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间
         messages.info(request, res)
         return HttpResponseRedirect('/blog/list/img/')     
     return  render(request, 'blog/upload.html', context=locals())
