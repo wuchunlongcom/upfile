@@ -13,7 +13,8 @@ from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write
 
 
 
-IMG_PATH = './blog/static/img'
+IMG_PATH = './static/img'
+#IMG_PATH = './blog/static/img'
 file_html = './blog/templates/uphtml'
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
           '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
