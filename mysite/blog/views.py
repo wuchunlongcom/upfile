@@ -35,7 +35,7 @@ def upload(request):
             return HttpResponseRedirect('#')   
         res = upfile_save(IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间        
         messages.info(request, res)
-        return HttpResponseRedirect('/')
+        #return HttpResponseRedirect('/')
         return HttpResponseRedirect('/blog/list/img/')     
     return  render(request, 'blog/upload.html', context=locals())
 
