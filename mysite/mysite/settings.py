@@ -134,8 +134,8 @@ STATIC_URL = '/static/'
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__)) # /Users/wuchunlong/local/upgit/upfile/mysite/mysite
 SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '..')) # /Users/wuchunlong/local/upgit/upfile/mysite
 
-# 部署的时候才发挥作用  STATIC_ROOT = /Users/wuchunlong/local/upgit/upfile/mysite/static
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static') 
+# 1、python manage.py collectstatic 收集所有static目录下的静态文件到该目录。 2、部署到远程机，显示该目录下的文件。特别注意：本地调试运行时不能显示此目录的图像。3、本地调试运行时，显示各个应用static下的图像文件。
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')  #  /Users/wuchunlong/local/upgit/upfile/mysite/static
  
 # 公共静态目录 STATICFILES_DIRS = ('/Users/wuchunlong/local/upgit/upfile/mysite/static_common', )
 STATICFILES_DIRS = (
