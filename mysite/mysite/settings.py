@@ -13,9 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# BASE_DIR = /Users/wuchunlong/local/upgit/upfile/mysite
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -129,11 +128,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '..'))
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static') # /Users/wuchunlong/local/upgit/upfile/mysite/static
+# 浏览器可以直接访问静态文件
+STATIC_URL = '/static/' 
 
-STATIC_URL = '/static/'
+SITE_ROOT = os.path.dirname(os.path.abspath(__file__)) # /Users/wuchunlong/local/upgit/upfile/mysite/mysite
+SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '..')) # /Users/wuchunlong/local/upgit/upfile/mysite
+
+# 部署的时候才发挥作用  STATIC_ROOT = /Users/wuchunlong/local/upgit/upfile/mysite/static
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static') 
+ 
+# 公共静态目录 STATICFILES_DIRS = ('/Users/wuchunlong/local/upgit/upfile/mysite/static_common', )
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static_common').replace('\\', r'/'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
