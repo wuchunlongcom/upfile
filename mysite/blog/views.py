@@ -100,7 +100,9 @@ def image_upload(request):
 def list_img(request):
     myfile = MyFile(file_img, imgExt)   
     list_img = myfile.toNameList() # ['blog/static/img/1.jpg', ...]
-    list_img = ['/static%s' %i.split('static')[-1] for i in list_img] # ['/static/img/1.jpg', ...]
+    list_img = ['%s' %i.split('/static/')[-1] for i in list_img] # ['img/1.jpg', ...]
+    
+    print('list_img======', list_img)
     return  render(request, 'list-img.html', context=locals())
 
 #  http://localhost:8000/blog/list/html/
