@@ -10,7 +10,8 @@
 
 ```
 恢复历史提交
-1、git reset --hard  d3133ca3dd089501a   
+1、git reset --hard  d3133ca3dd089501a 
+2、git reset --hard  2c659291a0ffec615    重构2
 ```
 
 ```
