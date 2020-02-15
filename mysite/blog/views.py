@@ -15,6 +15,7 @@ from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write
 
 IMG_PATH = './static/img'
 #IMG_PATH = './blog/static/img'
+IMG_PATH_STATIC_COMMON = './static_common/img'
 file_html = './blog/templates/uphtml'
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
           '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
@@ -33,9 +34,10 @@ def upload(request):
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')   
-        res = upfile_save(IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间        
-        messages.info(request, res)
-        shutil.copy('%s/%s' %(IMG_PATH,upfile.name), './static_common/img')
+        res1 = upfile_save(IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间
+        res2 = upfile_save(IMG_PATH_STATIC_COMMON, upfile) # 保存上传文件，上传文件名加当前时间         
+        messages.info(request, '%s. %s'%(res1,res2))
+        #shutil.copy('%s/%s' %(IMG_PATH,upfile.name), './static_common/img')
         return HttpResponseRedirect('/blog/list/img/')     
     return  render(request, 'blog/upload.html', context=locals())
 
