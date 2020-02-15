@@ -7,10 +7,9 @@ from django.contrib import messages
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.views.generic.base import View
 from django.http import JsonResponse
-from blog.models import Course
+
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_2, upfile_save_time, read_txt, write_txt
-
 
 IMG_PATH = './static/img'  # 部署后，显示图像文件目录
 IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
@@ -67,15 +66,27 @@ def api_upfile_save(request):
 
 #上传目录(支持多个目录)中的所有文件。不能上传目录(结构)，只会把目录和其子目录的文件上传而不会上传目录。 http://localhost:8000/blog/upfolder/
 def upfolder(request):  
-    if request.method == "POST":
-        res = ''
-        upfiles = request.FILES.getlist("upfiles", None)    # 获取upimg文件列表
-        
-        for upfile in upfiles: 
-            res += upfile_save_2(upfile, IMG_PATH, IMG_PATH_STATIC_COMMON)
-            
+    if request.method == "POST":    # 请求方法为POST时，进行处理  
+        upimg = request.FILES.getlist("upimg", None)        #第一个目录 获取upimg文件列表
+        upvideo = request.FILES.getlist("upvideo", None)    #第二个目录 获取upvideo文件列表
+        res_img = upfile_save('blog/static/upimg', upimg)
+        res_video = upfile_save('blog/static/upvideo', upvideo)
+        res = '%s. %s' %(res_img, res_video)
         messages.info(request, res)
     return  render(request, 'blog/upfolder.html', context=locals())
+
+
+
+def image_upload(request):
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():            
+            # 保存上传的图像文件。保存路径分别由settings.py和models.py设置
+            form.save() 
+            #print('request.raw_post_data======', request.raw_post_data) 
+            return HttpResponseRedirect('/')
+    #return HttpResponseRedirect('/')
+    return render(request, 'blog/image_upload.html', context=locals())
  
   
 # 图片懒加载显示图片技术  http://localhost:8000/blog/list/img/
@@ -85,7 +96,7 @@ def list_img(request):
     list_img = ['%s' %i.split('/static/')[-1] for i in list_img] # ['img/1.jpg', ...]
     if list_img == ['']:
         list_img = []
-    
+    #print('list_html======', list_img)
     return  render(request, 'list-img.html', context=locals())
 
 #  http://localhost:8000/blog/list/html/
@@ -107,16 +118,3 @@ def show_html(request):
         txt = txt.split(txt1)[-1]
         txt = txt.split('</body>')[0]
     return  render(request, 'blog/show_html.html', context=locals())
-
-
-def image_upload(request):
-    """  这是一个含数据库、form 的上传图像文件的实例 """
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():            
-            # 保存上传的图像文件。保存路径分别由settings.py和models.py设置
-            form.save() 
-    """ 获得数据库最后一条记录的image """
-    if Course.objects.filter().count():                    
-        imageURL = Course.objects.filter(id=Course.objects.filter().last().id).first().image  
-    return render(request, 'blog/image_upload.html', context=locals())

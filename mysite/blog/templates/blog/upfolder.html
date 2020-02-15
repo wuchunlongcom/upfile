@@ -3,16 +3,15 @@
 
     <h3> 支持多个目录上传文件 但是 不能上传目录(结构),只会把目录和其子目录的文件上传,而不会上传目录 </h3>
 
-    <form enctype="multipart/form-data" action="" method="POST">
+    <form enctype="multipart/form-data" action="/blog/upfolder/" method="POST">
            {% csrf_token %}
-           <h4> 打开目录 提交上传目录中的所有文件</h4> <br>
-           <input type="file" name="upfiles" id="upfiles" multiple webkitdirectory="">
+           upimg:<input type="file" name="upimg" id="upimg" multiple webkitdirectory="">
            <br/>
 
-           <input type="submit" value="提 交"/>
-    </form>
-
-    <br><br>
-    
+           upvideo:<input type="file" name="upvideo" id="upvideo" multiple webkitdirectory="">
+           <br/>
+           <input type="submit" value="上传目录中的所有文件  提交"/>
+     </form>
+  
 
 {% endblock %}

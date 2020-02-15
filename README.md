@@ -1,4 +1,4 @@
-### upfile                        
+### upfile-env                        
 
 ```
 1、上传单个文件、上传文件进度条、CSRF验证。     
@@ -10,17 +10,10 @@
 
 ```
 恢复历史提交
-1、git reset --hard  d3133ca3dd089501a 
-2、git reset --hard  2c659291a0ffec615    重构2 上传文件路径正常
-
-3、git reset --hard  13824883367e12    重构3   media正常，但其他上传文件路径错误   
-
+1、 重构2   79d6fadf1855dde
 ```
 
 ```
-每晚的1:10访问一次
-10 1 * * * python {remote_website_dir}/tool/backupdb.py
-
 TEL: 134 0255 3918
 EMAIL: wuchunlongcom@outlook.com     
 DATE: 2019.12.20
