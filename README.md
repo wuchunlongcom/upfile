@@ -12,6 +12,7 @@
 恢复历史提交
 1、git reset --hard  d3133ca3dd089501a 
 2、git reset --hard  2c659291a0ffec615    重构2
+3、git reset --hard  13824883367e12    重构3 
 ```
 
 ```
