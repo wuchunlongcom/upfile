@@ -8,7 +8,7 @@
 				<h1>个人信息</h1>
 			</div>
              MEDIA_URL ==== {{ MEDIA_URL }} <br>
-            MEDIA_ROOT === {{ MEDIA_ROOT }}
+            imageURL === {{imageURL }}
 			
             <div class="inforcon">
 				<div class="left" style="width:242px;">
@@ -16,7 +16,7 @@
                     <form class="clearfix" id="jsAvatarForm" enctype="multipart/form-data" autocomplete="off" method="post" action="" target='frameFile'>
                         <label class="changearea" for="avatarUp">
                             <span id="avatardiv" class="pic">
-                                <img width="100" height="100" class="js-img-show"  src=""/>
+                                <img width="100" height="100" class="js-img-show"  src="{{ MEDIA_URL }}/{{imageURL}}"/>
                             </span>
                             <span >
                                 
