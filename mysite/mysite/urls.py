@@ -20,6 +20,7 @@ from django.contrib.auth import views as auth_views
 from django.views.generic import RedirectView
 
 from django.views.static import serve 
+
 from mysite.settings import MEDIA_ROOT, STATICFILES_DIRS, STATIC_ROOT
 
 from django.conf import settings
@@ -33,12 +34,7 @@ urlpatterns = [
     # 处理 media 信息，用于图片获取
     url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
     
-    #静态文件 STATIC_ROOT
-    #re_path(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS[0] }),
-
     
     url(r'^blog/', include('blog.urls')),
     url(r'^$', RedirectView.as_view(url='/blog/index/', query_string=True)),
 ]
-# urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
