@@ -66,7 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                 # 设置media以显示图片
+                # 设置media以显示图片
                 'django.template.context_processors.media',
             ],
         },

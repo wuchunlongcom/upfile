@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.views.generic.base import View
 from django.http import JsonResponse
+from .models import Course
 
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_2, upfile_save_time, read_txt, write_txt
