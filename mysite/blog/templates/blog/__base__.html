@@ -39,10 +39,9 @@ background: #3ACC3A !important ;
 							 <a href="/blog/index/">HOME</a>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传文件<strong class="caret"></strong></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传文件(img目录)<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li><a href="{% url 'upload' %}"> form上传单个图像文件 </a></li>
-								<li><a href="{% url 'uphtml' %}"> form上传单个html文件 </a></li>
 								<li class="divider"></li>
                                 <li><a href="{% url 'upfile_ajax_XMLHttpRequest1' %}"> upfile_ajax_XMLHttpRequest1 </a></li>
                                 <li><a href="{% url 'upfile_ajax_XMLHttpRequest2' %}"> upfile_ajax_XMLHttpRequest2 </a></li>
@@ -50,18 +49,22 @@ background: #3ACC3A !important ;
 
                                 <li class="divider"></li>
 
-                                <li><a href="{% url 'image_upload' %}"> 数据库 form 上传图像文件</a></li>
+                                <li><a href="{% url 'upfolder' %}"> 批量上传文件(目录内所有文件) </a></li>
+
+                                <li class="divider"></li>
+
+                                <li><a href="{% url 'image_upload' %}"> 上传图像文件(含数据库 form) </a></li>
 							 
 							</ul>
 					    </li>
+                        
+                        <li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传文件(blog目录)<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
 
-						
-
-					    <li class="dropdown">
-							 <a href="/blog/upfolder/">上传目录内所有文件</a>
+					    		<li><a href="{% url 'uphtml' %}"> form上传单个html文件 </a></li>
+                            </ul>
 					    </li>
-
-					    
 
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示html<strong class="caret"></strong></a>
@@ -77,21 +80,21 @@ background: #3ACC3A !important ;
 
 
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">显示图片测试<strong class="caret"></strong></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">显示图片(img目录)<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								
 								<li class="divider"></li>
 
 								<li>
-									 <a href="{% url 'showimg' %}">图片懒加载技术1</a>
+									 <a href="{% url 'showimg' %}">图片懒加载 每行显示1张</a>
 								</li>
 								<!-- <li class="divider"></li> -->
 								<li>
-									 <a href="{% url 'showimg2' %}">图片懒加载技术2</a>
+									 <a href="{% url 'showimg2' %}">图片懒加载 每行显示1张</a>
 								</li>
 								<li class="divider"></li>
 								<li>
-									 <a href="{% url 'list_img' %}">图片懒加载技术3</a>
+									 <a href="{% url 'list_img' %}">图片懒加载 显示img目录图片</a>
 								</li>
 								<li class="divider"></li>
 								

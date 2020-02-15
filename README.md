@@ -1,4 +1,4 @@
-### upfile-env                        
+### upfile                        
 
 ```
 1、上传单个文件、上传文件进度条、CSRF验证。     
@@ -14,7 +14,7 @@
 1、git reset --hard  d3133ca3dd089501a 
 2、git reset --hard  2c659291a0ffec615    重构2
 3、git reset --hard  13824883367e12    重构3 
-4、上传文件大全
+4、git reset --hard  cfeb20d27fe5c5      c9e8d9648ced137e98
 ```
 
 ```

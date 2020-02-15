@@ -16,7 +16,6 @@ urlpatterns = [
     
     url(r'^uphtml/$', views.uphtml, name="uphtml"),
     url(r'^upfolder/$', views.upfolder, name="upfolder"),
-
        
     url(r'^upfile/ajax/XMLHttpRequest1/$', IndexView.as_view(
         template_name = 'blog/upfile_ajax_XMLHttpRequest1.html'), 
@@ -32,8 +31,7 @@ urlpatterns = [
     url(r'^showimg2/$', IndexView.as_view(
         template_name = 'showimg2.html'), name='showimg2'),
     
-    
-           
+               
     url("list/img", views.list_img, name='list_img'),
     url("list/html/", views.list_html, name='list_html'),
     
