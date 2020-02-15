@@ -9,7 +9,7 @@ from django.views.generic.base import View
 from django.http import JsonResponse
 
 from .forms import UploadImageForm
-from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
+from myAPI.fileAPI import MyFile, upfile_save, upfile_save_2, upfile_save_time, read_txt, write_txt
 
 IMG_PATH = './static/img'  # 部署后，显示图像文件目录
 IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
@@ -25,10 +25,7 @@ htmlExt = ['.html', '.htm',\
 def index(request):
     return  render(request, 'blog/index.html', context=locals())
 
-def upfile_img_save(upfile):
-    res1 = upfile_save(IMG_PATH, upfile) # 保存上传文件，供部署后，显示图像文件
-    res2 = upfile_save(IMG_PATH_STATIC_COMMON, upfile) # 保存上传文件，供本地运行时，显示图像文件         
-    return '%s. %s'%(res1,res2)
+
 
 # 上传单个文件。 http://localhost:8000/blog/upload/
 def upload(request):  
@@ -38,7 +35,7 @@ def upload(request):
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')
 
-        messages.info(request, upfile_img_save(upfile))
+        messages.info(request, upfile_save_2(upfile, IMG_PATH, IMG_PATH_STATIC_COMMON))
         return HttpResponseRedirect('/blog/list/img/')   
  
     return  render(request, 'blog/upload.html', context=locals())
@@ -51,18 +48,18 @@ def uphtml(request):
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('/')   
-        res = upfile_save(file_html, upfile) # 保存上传文件，上传文件同名会覆盖
+        res = upfile_save(upfile, file_html) # 保存上传文件，上传文件同名会覆盖
         messages.info(request, res)
         return HttpResponseRedirect('/')     
     return  render(request, 'blog/uphtml.html', context=locals())
 
 
-# 保存上传文件, 上传文件不会覆盖  http://localhost:8000/blog/api_upfile_save/
+# api 保存上传文件  http://localhost:8000/blog/api_upfile_save/
 def api_upfile_save(request):
     res = 'hello!'
     if request.method == 'POST':
         upfile = request.FILES.get("upfile", None)
-        res = upfile_img_save(upfile)
+        res = upfile_save_2(upfile, IMG_PATH, IMG_PATH_STATIC_COMMON)
         
     mylist = [{"res" : res }] 
     return JsonResponse(mylist, safe = False) 
@@ -78,21 +75,7 @@ def upfolder(request):
         messages.info(request, res)
     return  render(request, 'blog/upfolder.html', context=locals())
 
-# def writefile(request, upname, savepath):
-#     try:
-#         if not upname:
-#             messages.info(request, '没有选择目录！')  
-#             return HttpResponseRedirect('#')
-#         for file in upname:   
-#             position = os.path.join(savepath,str(file))
-#             f = open(position,'wb+')    # 打开特定的文件进行二进制的写操作        
-#             for chunk in file.chunks(): # 分块写入文件  
-#                 f.write(chunk)  
-#             f.close()
-#         messages.info(request, '%s 所有文件上传成功!'%(upname))
-#     except Exception as ex:
-#         messages.info(request,str(ex))
-#     return HttpResponseRedirect('/')
+
 
 def image_upload(request):
     if request.method == 'POST':
