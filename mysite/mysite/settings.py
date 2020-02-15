@@ -151,5 +151,5 @@ LOGOUT_REDIRECT_URL = '/'
 
 # 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'blog','media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'blog','static','media')

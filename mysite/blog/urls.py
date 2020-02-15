@@ -36,8 +36,6 @@ urlpatterns = [
     
     
     #用户图像上传
-    #from .views import upload_file #UserView
-    #url("image/upload/", UserView.as_view(), name='image_upload'),  api_upfile_save
     url("image/upload/", views.image_upload, name='image_upload'),
            
     url("list/img", views.list_img, name='list_img'),
