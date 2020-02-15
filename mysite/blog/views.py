@@ -25,24 +25,29 @@ htmlExt = ['.html', '.htm',\
 def index(request):
     return  render(request, 'blog/index.html', context=locals())
 
+def upfile_img_save(upfile):
+    res1 = upfile_save(IMG_PATH, upfile) # 保存上传文件，供部署后，显示图像文件
+    res2 = upfile_save(IMG_PATH_STATIC_COMMON, upfile) # 保存上传文件，供本地运行时，显示图像文件         
+    return '%s. %s'%(res1,res2)
+
 # 上传单个文件。 http://localhost:8000/blog/upload/
 def upload(request):  
-    if request.method == "POST":    # 请求方法为POST时，进行处理  
-        upfile = request.FILES.get("upfile", None)    # 获取上传的文件，如果没有文件，则默认为None  
+    if request.method == "POST":   
+        upfile = request.FILES.get("upfile", None)    
         if not upfile:
             messages.info(request, '没有选择文件！')  
-            return HttpResponseRedirect('#')   
-        res1 = upfile_save(IMG_PATH, upfile) # 保存上传文件，供部署后，显示图像文件
-        res2 = upfile_save(IMG_PATH_STATIC_COMMON, upfile) # 保存上传文件，供本地运行时，显示图像文件         
-        messages.info(request, '%s. %s'%(res1,res2))
-        return HttpResponseRedirect('/blog/list/img/')     
+            return HttpResponseRedirect('#')
+
+        messages.info(request, upfile_img_save(upfile))
+        return HttpResponseRedirect('/blog/list/img/')   
+ 
     return  render(request, 'blog/upload.html', context=locals())
 
 
 # 上传单个html文件。 http://localhost:8000/blog/uphtml/
 def uphtml(request):  
-    if request.method == "POST":    # 请求方法为POST时，进行处理  
-        upfile = request.FILES.get("upfile", None)    # 获取上传的文件，如果没有文件，则默认为None  
+    if request.method == "POST":     
+        upfile = request.FILES.get("upfile", None)     
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('/')   
@@ -57,7 +62,8 @@ def api_upfile_save(request):
     res = 'hello!'
     if request.method == 'POST':
         upfile = request.FILES.get("upfile", None)
-        res = upfile_save_time(UP_IMG_PATH, upfile) # 保存上传文件，上传文件名加当前时间
+        res = upfile_img_save(upfile)
+        
     mylist = [{"res" : res }] 
     return JsonResponse(mylist, safe = False) 
 
