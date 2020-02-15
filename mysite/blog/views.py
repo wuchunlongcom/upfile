@@ -7,10 +7,9 @@ from django.contrib import messages
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.views.generic.base import View
 from django.http import JsonResponse
-from blog.models import Course
+
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_2, upfile_save_time, read_txt, write_txt
-
 
 IMG_PATH = './static/img'  # 部署后，显示图像文件目录
 IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
@@ -25,7 +24,6 @@ htmlExt = ['.html', '.htm',\
 # http://localhost:8000/blog/index/
 def index(request):
     return  render(request, 'blog/index.html', context=locals())
-
 
 
 # 上传单个文件。 http://localhost:8000/blog/upload/
