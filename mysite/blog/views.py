@@ -11,8 +11,6 @@ from django.http import JsonResponse
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_2, upfile_save_time, read_txt, write_txt
 
-from blog.models import Course  # add
-
 IMG_PATH = './static/img'  # 部署后，显示图像文件目录
 IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
  
@@ -77,30 +75,6 @@ def upfolder(request):
         messages.info(request, res)
     return  render(request, 'blog/upfolder.html', context=locals())
 
-
-
-def image_upload(request):
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():            
-            # 保存上传的图像文件。保存路径分别由settings.py和models.py设置
-            form.save() 
-            #print('request.raw_post_data======', request.raw_post_data) 
-            return HttpResponseRedirect('/')
-    #return HttpResponseRedirect('/')
-    return render(request, 'blog/image_upload.html', context=locals())
- 
-# def image_upload(request):
-#     """  这是一个含数据库、form 的上传图像文件的实例 """
-#     if request.method == 'POST':
-#         form = UploadImageForm(request.POST, request.FILES)
-#         if form.is_valid():            
-#             # 保存上传的图像文件。保存路径分别由settings.py和models.py设置
-#             form.save() 
-#     """ 获得数据库最后一条记录的image """
-#     if Course.objects.filter().count():                    
-#         imageURL = Course.objects.filter(id=Course.objects.filter().last().id).first().image  
-#     return render(request, 'blog/image_upload.html', context=locals())
   
 # 图片懒加载显示图片技术  http://localhost:8000/blog/list/img/
 def list_img(request):

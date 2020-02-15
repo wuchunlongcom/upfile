@@ -19,11 +19,6 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import RedirectView
 
-from django.views.static import serve 
-from mysite.settings import MEDIA_ROOT, STATICFILES_DIRS, STATIC_ROOT
-
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,8 +27,4 @@ urlpatterns = [
     
     url(r'^blog/', include('blog.urls')),
     url(r'^$', RedirectView.as_view(url='/blog/index/', query_string=True)),
-    
-    # 处理 media 信息，用于图片获取
-    url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
-
 ]

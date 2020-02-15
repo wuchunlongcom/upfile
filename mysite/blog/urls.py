@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url, include
-from django.views.static import serve 
 from django.urls import path,include,re_path
 from django.views.generic import TemplateView
 from . import views
@@ -35,8 +34,6 @@ urlpatterns = [
         template_name = 'showimg2.html'), name='showimg2'),
     
     
-    #用户图像上传
-    url("image/upload/", views.image_upload, name='image_upload'),
            
     url("list/img", views.list_img, name='list_img'),
     url("list/html/", views.list_html, name='list_html'),
