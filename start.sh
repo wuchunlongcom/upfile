@@ -20,11 +20,19 @@ function build_venv {
     pip3 install -r requirements.txt
 }
 
+# 这样删除数据库，不够理想 2021.10.11
+#logging "Clean"
+#rm -rf "db.sqlite3"
+#以下不显示db.sqlite3了，但db.sqlite3实际并没有删除 
+#ls  
+
+# 此外 0001_initial.py 必须命全名，0*.py不能删除 
+#rm -rf "classroom/migrations/0001_initial.py"
 
 function del_db {
     logging "Clean"
     rm -rf "${BASE_DIR}/mysite/db.sqlite3"
-    rm -rf "${BASE_DIR}/mysite/blog/migrations/0*.*"
+    rm -rf "${BASE_DIR}/mysite/blog/migrations/0001_initial.py"
     ls "${BASE_DIR}/mysite/blog/migrations/"
 }
 function creator_db {
