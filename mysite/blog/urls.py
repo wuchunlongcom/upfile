@@ -20,19 +20,25 @@ urlpatterns = [
     url(r'^upfile/ajax/XMLHttpRequest1/$', IndexView.as_view(
         template_name = 'blog/upfile_ajax_XMLHttpRequest1.html'), 
         name='upfile_ajax_XMLHttpRequest1'),
+    
     url(r'^upfile/ajax/XMLHttpRequest2/$', IndexView.as_view(
         template_name = 'blog/upfile_ajax_XMLHttpRequest2.html'), 
         name='upfile_ajax_XMLHttpRequest2'),
+    
     url(r'^upfile/ajax/XMLHttpRequest3/$', IndexView.as_view(
         template_name = 'blog/upfile_ajax_XMLHttpRequest3.html'), 
         name='upfile_ajax_XMLHttpRequest3'),
 
-    url(r'^showimg/$', IndexView.as_view(), name='showimg'),
-    url(r'^showimg2/$', IndexView.as_view(
-        template_name = 'showimg2.html'), name='showimg2'),
+    url(r'^showimg/$', views.showimg, name='showimg'),
+    
+    url(r'^showimg2/$', views.showimg2, name='showimg2'),
+    
+    # url(r'^showimg2/$', IndexView.as_view(
+    #     template_name = 'showimg2.html'), name='showimg2'),
     
                
     url("list/img", views.list_img, name='list_img'),
+    
     url("list/html/", views.list_html, name='list_html'),
     
     url("api_upfile_save/", views.api_upfile_save, name='api_upfile_save'),  

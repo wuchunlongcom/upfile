@@ -66,18 +66,10 @@ def write_txt(filename, txt):
 
 def upfile_save(mode, filepath):
     """
-        保存上传文件：上传文件同名会覆盖
+        保存上传文件：上传的文件同名会覆盖
     """
     filename = os.path.join(filepath, mode.name)
-    return savefile(mode, filename)
-
-def upfile_save_2(upfile, filename1, filename2):
-    """
-        为了确保本地运行和部署后都能显示图像文件，上传文件到两个目录        
-    """
-    res1 = upfile_save(upfile, filename1) # 保存上传文件，供部署后，显示图像文件
-    res2 = upfile_save(upfile, filename2) # 保存上传文件，供本地运行时，显示图像文件         
-    return '%s. %s'%(res1,res2)
+    return saveupfile(mode, filename)
 
 def upfile_save_time(mode, filepath):
     """
@@ -86,15 +78,15 @@ def upfile_save_time(mode, filepath):
     name, etx = os.path.splitext(mode.name)
     filename = '%s-%s%s' %(name, datetime.datetime.now().strftime('%Y%m%d[%H:%M:%S]'), etx)  
     filename = os.path.join(filepath, filename)
-    return savefile(mode, filename)
+    return saveupfile(mode, filename)
     
-def savefile(mode, filename):    
+def saveupfile(mode, filename):    
     try:
         f = open(filename, 'wb+')  # 打开特定的文件进行二进制的写操作
         for chunk in mode.chunks():  # 分块写入文件  
             f.write(chunk)      
     except Exception as ex:
-        return str(ex)    
+        return alse    
     f.close() 
-    return 'UpFile: %s. add nowTime. UpFile Success!' %(filename)  
+    return True  
     

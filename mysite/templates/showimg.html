@@ -4,20 +4,14 @@
 
     <style>
         *{ margin:0; padding: 0; list-style: none; }
-        #list img{ width: 500px; height: 480px;}
+        #list img{ width: 900px; height: 630px;}
     </style>
-           <h2> 图片懒加载技术显示 </h2>
+           <h2> 图片懒加载技术显示 (图片总数：{{list_img_len}})</h2>
 <ul id="list">
-    <li><img _src="/static/img/img1.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img2.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img3.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img4.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img5.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img6.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img7.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img8.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img9.png" alt="pic"/></li> <br>
-    <li><img _src="/static/img/img10.png" alt="pic"/></li> <br>
+   
+    {% for i in list_img %}
+      <li><img _src="/static/{{i}}" alt="pic"/></li> <br> 
+    {% endfor %}
 </ul>
 
 

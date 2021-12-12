@@ -10,20 +10,20 @@ from django.http import JsonResponse
 from .models import Course
 
 from .forms import UploadImageForm
-from myAPI.fileAPI import MyFile, upfile_save, upfile_save_2, upfile_save_time, read_txt, write_txt
+from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 
-IMG_PATH = './static/img'  # 部署后，显示图像文件目录
+# IMG_PATH = './static/img'  # 部署后，显示图像文件目录
 IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
  
 file_html = './blog/templates/uphtml'
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
           '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
 
-htmlExt = ['.html', '.htm',\
-           '.HTML', '.HTM']
+htmlExt = ['.html', '.htm', '.HTML', '.HTM']
 
 # http://localhost:8000/blog/index/
 def index(request):
+    src = '上传文件，上传的文件同名会覆盖！'
     return  render(request, 'blog/index.html', context=locals())
 
 
@@ -34,8 +34,7 @@ def upload(request):
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')
-
-        messages.info(request, upfile_save_2(upfile, IMG_PATH, IMG_PATH_STATIC_COMMON))
+        messages.info(request, upfile_save(upfile, IMG_PATH_STATIC_COMMON))
         return HttpResponseRedirect('/blog/list/img/')   
  
     return  render(request, 'blog/upload.html', context=locals())
@@ -48,7 +47,8 @@ def uphtml(request):
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('/')   
-        res = upfile_save(upfile, file_html) # 保存上传文件，上传文件同名会覆盖
+        #  保存上传文件，上传文件同名会覆盖
+        res = '上传成功!' if upfile_save(upfile, IMG_PATH_STATIC_COMMON) else '上传失败!' 
         messages.info(request, res)
         return HttpResponseRedirect('/')     
     return  render(request, 'blog/uphtml.html', context=locals())
@@ -56,57 +56,69 @@ def uphtml(request):
 
 # api 保存上传文件  http://localhost:8000/blog/api_upfile_save/
 def api_upfile_save(request):
-    res = 'hello!'
+    info = ''
     if request.method == 'POST':
         upfile = request.FILES.get("upfile", None)
-        res = upfile_save_2(upfile, IMG_PATH, IMG_PATH_STATIC_COMMON)
-        
-    mylist = [{"res" : res }] 
-    return JsonResponse(mylist, safe = False) 
+        info = '上传成功!' if upfile_save(upfile, IMG_PATH_STATIC_COMMON) else '上传失败!' 
+    return  JsonResponse({"info" : info })   
+ 
 
-#上传目录(支持多个目录)中的所有文件。不能上传目录(结构)，只会把目录和其子目录的文件上传而不会上传目录。 http://localhost:8000/blog/upfolder/
+#上传目录(支持多个目录)中的所有文件。不能上传目录(结构)，只会把目录和其子目录的文件上传而不会上传目录。 
+#http://localhost:8000/blog/upfolder/
 def upfolder(request):  
     if request.method == "POST":
-        res = ''
+        res = 0
         upfiles = request.FILES.getlist("upfiles", None)    # 获取upimg文件列表
         
-        for upfile in upfiles: 
-            res += upfile_save_2(upfile, IMG_PATH, IMG_PATH_STATIC_COMMON)
+        for upfile in upfiles:         
+            upfile_save(upfile, IMG_PATH_STATIC_COMMON)
+            res += 1
             
-        messages.info(request, res)
+        messages.info(request, '上传%s个文件' %res)
     return  render(request, 'blog/upfolder.html', context=locals())
  
   
 # 图片懒加载显示图片技术  http://localhost:8000/blog/list/img/
 def list_img(request):
-    myfile = MyFile(IMG_PATH, imgExt)   
+    myfile = MyFile(IMG_PATH_STATIC_COMMON, imgExt)   
     list_img = myfile.toNameList() # ['blog/static/img/1.jpg', ...]
-    list_img = ['%s' %i.split('/static/')[-1] for i in list_img] # ['img/1.jpg', ...]
+    list_img = ['%s' %i.split('/static_common/')[-1] for i in list_img] # ['img/1.jpg', ...]
     if list_img == ['']:
         list_img = []
-    
+    list_img_len = len(list_img)
     return  render(request, 'list-img.html', context=locals())
+
+def showimg(request):
+    myfile = MyFile(IMG_PATH_STATIC_COMMON, imgExt)   
+    list_img = myfile.toNameList() # ['blog/static/img/1.jpg', ...]
+    list_img = ['%s' %i.split('/static_common/')[-1] for i in list_img] # ['img/1.jpg', ...]
+    if list_img == ['']:
+        list_img = []
+    list_img_len = len(list_img)
+    return  render(request, 'showimg.html', context=locals())
+
+def showimg2(request):
+    myfile = MyFile(IMG_PATH_STATIC_COMMON, imgExt)   
+    list_img = myfile.toNameList() # ['blog/static/img/1.jpg', ...]
+    list_img = ['%s' %i.split('/static_common/')[-1] for i in list_img] # ['img/1.jpg', ...]
+    if list_img == ['']:
+        list_img = []
+    list_img_len = len(list_img)
+    return  render(request, 'showimg2.html', context=locals())
 
 #  http://localhost:8000/blog/list/html/
 def list_html(request):
     myfile = MyFile(file_html, htmlExt)   
     list_html = myfile.toNameList() # ['/blog/templates/uphtml/1.html', ...]
-    list_html = ['%s' %i.split('templates/')[-1] for i in list_html] # ['uphtml/1.html', ...]
-    
+    list_html = ['%s' %i.split('templates/')[-1] for i in list_html] # ['uphtml/1.html', ...]    
     return  render(request, 'list-html.html', context=locals())
 
 def show_html(request):
-    cleanData = request.GET.dict()
-    h = cleanData.get('h','')    
-    filename = os.path.join(file_html, os.path.split(h)[1])
+    cleanData = request.GET.dict()    
+    htm = cleanData.get('htm','') 
+    filename = os.path.join(file_html, os.path.split(htm)[1])
     txt = read_txt(filename)    
-    items = txt.split('<g>')
-    if len(items) > 1:
-        txt1 = items[0]         
-        txt = txt.split(txt1)[-1]
-        txt = txt.split('</body>')[0]
     return  render(request, 'blog/show_html.html', context=locals())
-
 
 def image_upload(request):
     """  这是一个含数据库、form 的上传图像文件的实例 """

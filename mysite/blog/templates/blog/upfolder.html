@@ -5,11 +5,11 @@
 
     <form enctype="multipart/form-data" action="/blog/upfolder/" method="POST">
            {% csrf_token %}
-           upimg:<input type="file" name="upimg" id="upimg" multiple webkitdirectory="">
+           upimg:<input type="file" name="upfiles" id="upfiles" multiple webkitdirectory="">
            <br/>
 
-           upvideo:<input type="file" name="upvideo" id="upvideo" multiple webkitdirectory="">
-           <br/>
+           <!-- upvideo:<input type="file" name="upvideo" id="upvideo" multiple webkitdirectory="">
+           <br/> -->
            <input type="submit" value="上传目录中的所有文件  提交"/>
      </form>
   

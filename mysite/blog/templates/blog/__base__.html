@@ -39,13 +39,13 @@ background: #3ACC3A !important ;
 							 <a href="/blog/index/">HOME</a>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传文件(img目录)<strong class="caret"></strong></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传文件<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
-								<li><a href="{% url 'upload' %}"> form上传单个图像文件 </a></li>
+								<li><a href="{% url 'upload' %}"> 上传单个图像文件</a></li>
 								<li class="divider"></li>
-                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest1' %}"> upfile_ajax_XMLHttpRequest1 </a></li>
-                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest2' %}"> upfile_ajax_XMLHttpRequest2 </a></li>
-                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest3' %}"> upfile_ajax_XMLHttpRequest3 </a></li>
+                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest1' %}"> 上传文件1 进度条</a></li>
+                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest2' %}"> 上传文件2 进度条 </a></li>
+                                <li><a href="{% url 'upfile_ajax_XMLHttpRequest3' %}"> 上传文件3 进度条 </a></li>
 
                                 <li class="divider"></li>
 
@@ -53,13 +53,13 @@ background: #3ACC3A !important ;
 
                                 <li class="divider"></li>
 
-                                <li><a href="{% url 'image_upload' %}"> 上传图像文件(含数据库 form) </a></li>
+                                <li><a href="{% url 'image_upload' %}"> 上传图像文件(数据库) </a></li>
 							 
 							</ul>
 					    </li>
                         
                         <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传文件(blog目录)<strong class="caret"></strong></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">上传单个html文件<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 
 					    		<li><a href="{% url 'uphtml' %}"> form上传单个html文件 </a></li>
@@ -80,21 +80,21 @@ background: #3ACC3A !important ;
 
 
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">显示图片(img目录)<strong class="caret"></strong></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">图片显示(懒加载)<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								
 								<li class="divider"></li>
 
 								<li>
-									 <a href="{% url 'showimg' %}">图片懒加载 每行显示1张</a>
+									 <a href="{% url 'showimg' %}">图片懒加载 每行显示1张图片</a>
 								</li>
 								<!-- <li class="divider"></li> -->
 								<li>
-									 <a href="{% url 'showimg2' %}">图片懒加载 每行显示1张</a>
+									 <a href="{% url 'showimg2' %}">图片懒加载 每行显示2张图片</a>
 								</li>
 								<li class="divider"></li>
 								<li>
-									 <a href="{% url 'list_img' %}">图片懒加载 显示img目录图片</a>
+									 <a href="{% url 'list_img' %}">图片懒加载 每行显示4张图片</a>
 								</li>
 								<li class="divider"></li>
 								
