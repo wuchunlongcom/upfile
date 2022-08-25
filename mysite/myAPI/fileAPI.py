@@ -81,12 +81,13 @@ def upfile_save_time(mode, filepath):
     return saveupfile(mode, filename)
     
 def saveupfile(mode, filename):    
+    ret = True
     try:
         f = open(filename, 'wb+')  # 打开特定的文件进行二进制的写操作
         for chunk in mode.chunks():  # 分块写入文件  
             f.write(chunk)      
     except Exception as ex:
-        return alse    
+        ret = False   
     f.close() 
-    return True  
+    return ret 
     
