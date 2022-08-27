@@ -85,9 +85,10 @@ def saveupfile(mode, filename):
     try:
         f = open(filename, 'wb+')  # 打开特定的文件进行二进制的写操作
         for chunk in mode.chunks():  # 分块写入文件  
-            f.write(chunk)      
+            f.write(chunk)
+        f.close()
     except Exception as ex:
-        ret = False   
-    f.close() 
+        ret = False 
     return ret 
     
+
