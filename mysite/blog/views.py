@@ -36,6 +36,10 @@ def upload(request):
             return HttpResponseRedirect('/')
         
         upfile_save(upfile, IMG_PATH_STATIC)
+        #  保存上传文件，上传文件同名会覆盖
+        res = '上传成功!' if upfile_save(upfile, IMG_PATH_STATIC_COMMON) else '上传失败!'
+        messages.info(request, res)
+
         return HttpResponseRedirect('/blog/list/img/')   
  
     return  render(request, 'blog/upload.html', context=locals())
