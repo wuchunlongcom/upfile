@@ -12,8 +12,8 @@ from .models import Course
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 
-# IMG_PATH = './static/img'  # 部署后，显示图像文件目录
-IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
+IMG_PATH_STATIC_COMMON = './static/img'  # 部署后，显示图像文件目录
+# IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
  
 file_html = './blog/templates/uphtml'
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
