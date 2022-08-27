@@ -12,7 +12,7 @@ from .models import Course
 from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 
-# IMG_PATH = './static/img'  # 部署后，显示图像文件目录
+IMG_PATH_STATIC = './static/img'  # 部署后，显示图像文件目录
 IMG_PATH_STATIC_COMMON = './static_common/img' # 本地运行时，显示图像文件目录
  
 file_html = './blog/templates/uphtml'
@@ -34,6 +34,8 @@ def upload(request):
         if not upfile:
             messages.info(request, '没有选择文件！')  
             return HttpResponseRedirect('#')
+        
+        upfile_save(upfile, IMG_PATH_STATIC)
         messages.info(request, upfile_save(upfile, IMG_PATH_STATIC_COMMON))
         return HttpResponseRedirect('/blog/list/img/')   
  
@@ -46,7 +48,9 @@ def uphtml(request):
         upfile = request.FILES.get("upfile", None)     
         if not upfile:
             messages.info(request, '没有选择文件！')  
-            return HttpResponseRedirect('/')   
+            return HttpResponseRedirect('/') 
+          
+        upfile_save(upfile, IMG_PATH_STATIC)
         #  保存上传文件，上传文件同名会覆盖
         res = '上传成功!' if upfile_save(upfile, IMG_PATH_STATIC_COMMON) else '上传失败!' 
         messages.info(request, res)
@@ -59,6 +63,7 @@ def api_upfile_save(request):
     info = ''
     if request.method == 'POST':
         upfile = request.FILES.get("upfile", None)
+        upfile_save(upfile, IMG_PATH_STATIC)
         info = '上传成功!' if upfile_save(upfile, IMG_PATH_STATIC_COMMON) else '上传失败!' 
     return  JsonResponse({"info" : info })   
  
@@ -70,7 +75,8 @@ def upfolder(request):
         res = 0
         upfiles = request.FILES.getlist("upfiles", None)    # 获取upimg文件列表
         
-        for upfile in upfiles:         
+        for upfile in upfiles:
+            upfile_save(upfile, IMG_PATH_STATIC)         
             upfile_save(upfile, IMG_PATH_STATIC_COMMON)
             res += 1
             
