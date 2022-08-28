@@ -33,9 +33,8 @@ urlpatterns = [
     
     url(r'^showimg2/$', views.showimg2, name='showimg2'),
     
-    # url(r'^showimg2/$', IndexView.as_view(
-    #     template_name = 'showimg2.html'), name='showimg2'),
     
+    url("show_db_image/$", views.show_db_image, name='show_db_imageg'),
                
     url("list/img", views.list_img, name='list_img'),
     

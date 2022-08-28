@@ -1,0 +1,126 @@
+{% extends 'blog/__base__.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    myul{
+      overflow: hidden;
+      list-style: none;
+    }
+    myli{
+      float: left;
+      width: 285px;
+      height: 240px;
+      padding: 10px;
+    }
+    myli img{
+      display: inline-block;
+      width: 276px;
+      height: 230px;
+    }
+  </style>
+
+<div class="container">
+  <h2> 展示图片懒加载技术效果 图片规格 276x230 (图片总数：{{list_img_len}})</h2>
+  <myul>
+
+   <!--  <h4> 下面使用图片 data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg" 展示图片懒加载技术效果。django模板使用这种图片不需要加载时间的</h4>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg"></myli>
+    <myli><img src="" alt="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg"></myli>  -->
+     
+    
+    <h4> django模板，使用后台上传的图片，展示图片懒加载技术效果。可以上传一张试试...</h4>
+
+    {% for i in list_img %}
+      <myli><img src="" alt="" data-src="/media/{{ i }}" alt="美图"></myli> 
+    {% endfor %}
+
+
+  </myul>
+</div>
+
+
+<script>
+  // window绑定滚动事件
+  window.addEventListener('scroll',function(){
+    // 遍历所有的img标签
+    Array.prototype.slice.apply(document.getElementsByTagName('myli')).forEach((myli)=>{
+      let img=myli.getElementsByTagName('img')[0];
+      // 判断当前img是否出现在了视野中
+      // 判断当前img是否被加载过了
+      if(checkShow(img) && !isLoaded(img)){
+        loadImg(img);
+      }
+    })
+  });
+
+  // 判断img是否出现浏览器视野中
+  function checkShow(img) {
+    let scrollTop=document.documentElement.scrollTop; // 页面向上滚动的高度
+    let windowHeight=window.innerHeight; //浏览器自身高度
+    let offsetTop=img.offsetTop; //目标标签相对于document的高度
+    return (offsetTop > scrollTop && offsetTop <(windowHeight + scrollTop));
+  }
+
+  // 判断是否已经加载过
+  function isLoaded(img) {
+    return img.getAttribute('src')===img.getAttribute('data-src');
+  }
+
+  // 加载图片
+  function loadImg(img) {
+   img.setAttribute('src',img.getAttribute('data-src'));
+  }
+
+  let timer;
+  window.addEventListener('scroll',function(){
+    console.log('scroll')
+    if(timer){
+      clearTimeout(timer)
+    }
+    timer=setInterval(function(){
+      console.log('lazyRenderImg...');
+      // 遍历所有的img标签
+      lazyRenderImg();
+    },300);
+      
+  });
+
+  function lazyRenderImg(){
+    Array.prototype.slice.apply(document.getElementsByTagName('myli')).forEach((myli)=>{
+      let img=myli.getElementsByTagName('img')[0];
+      // 判断当前img是否出现在了视野中
+      // 判断当前img是否被加载过了
+      if(checkShow(img) && !isLoaded(img)){
+        loadImg(img);
+      }
+    })
+  }
+
+  // 第一次进页面加载处于视野中的图片
+  lazyRenderImg();
+
+  
+</script>
+
+{% endblock %}
