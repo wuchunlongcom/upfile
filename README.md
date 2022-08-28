@@ -7,7 +7,7 @@ python3.7.5
 
 ```
 一、上传单个文件
-1、上传单个文件,分别保存在(../static/img、../static_common/img)。
+1、上传单个文件,本地运行保存在../static_common/img，部署后保存在../static/img。
 2、上传文件进度条、CSRF验证。     
 3、批量上传文件，上传目录(支持多个目录)中的所有文件。
 但是不能上传目录(结构),只会把目录和其子目录的文件上传而不会上传目录。      
@@ -23,15 +23,7 @@ python3.7.5
 
 
 ```
-def saveupfile(mode, filename):    
-    try:
-        f = open(filename, 'wb+')  # 打开特定的文件进行二进制的写操作
-        for chunk in mode.chunks():  # 分块写入文件  
-            f.write(chunk)
-        f.close()
-        return  filename      
-    except Exception as ex:
-        print("err: %s" %ex)
-        return str(ex)    
- 2022.08.28 重构
+重构 views.py、fileAPI.py
+
+ 2022.08.28 
 ```
