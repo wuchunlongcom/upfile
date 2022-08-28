@@ -18,6 +18,7 @@ IMG_PATH_STATIC_COMMON = os.path.join(BASE_DIR, 'static_common', 'img')  # 本�
  
 FILE_HTML = os.path.join(BASE_DIR, 'blog', 'templates', 'uphtml') 
 
+
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
           '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
 
@@ -35,12 +36,11 @@ def upload(request):
         upfile = request.FILES.get("upfile", None)    
         if not upfile:
             messages.info(request, '没有选择文件！')  
-            return HttpResponseRedirect('#')
+            return HttpResponseRedirect('/')
         res = upfile_save(upfile, IMG_PATH_STATIC)
         messages.info(request, res)
         res = upfile_save(upfile, IMG_PATH_STATIC_COMMON)
         messages.info(request, res)
-
         return HttpResponseRedirect('/blog/list/img/')   
  
     return  render(request, 'blog/upload.html', context=locals())

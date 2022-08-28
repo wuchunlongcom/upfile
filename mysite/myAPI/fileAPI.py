@@ -61,9 +61,6 @@ def write_txt(filename, txt):
         ret = True
     return ret
 
-
-
-
 def upfile_save(mode, filepath):
     """
         保存上传文件：上传的文件同名会覆盖
@@ -90,5 +87,3 @@ def saveupfile(mode, filename):
     except Exception as ex:
         print("err: %s" %ex)
         return str(ex)      
-    
-    
