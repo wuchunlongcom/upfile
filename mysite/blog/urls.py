@@ -40,7 +40,8 @@ urlpatterns = [
     
     url("list/html/", views.list_html, name='list_html'),
     
-    url("api_upfile_save/", views.api_upfile_save, name='api_upfile_save'),  
+    url("api_upfile_save/", views.api_upfile_save, name='api_upfile_save'),
+      
          
     url(r'^image/upload/$', views.image_upload, name="image_upload"),   
 ]

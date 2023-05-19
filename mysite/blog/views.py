@@ -13,7 +13,6 @@ from .forms import UploadImageForm
 from myAPI.fileAPI import MyFile, upfile_save, upfile_save_time, read_txt, write_txt
 from mysite.settings import BASE_DIR  #本地运行时 BASE_DIR = /Users/wuchunlong/local/upgit/upfile/mysite
 
-
 IMG_PATH_STATIC = os.path.join(BASE_DIR, 'static', 'img')  # 部署后，显示图像文件目录
 IMG_PATH_STATIC_COMMON = os.path.join(BASE_DIR, 'static_common', 'img')  # 本地运行时，显示图像文件目录
  
@@ -21,7 +20,7 @@ FILE_HTML = os.path.join(BASE_DIR, 'blog', 'templates', 'uphtml')
 
 
 imgExt = ['.bmp', '.gif', '.jpg', '.pic', '.png', '.tif', '.jpeg', '.php',\
-          '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP']
+          '.BMP', '.GIF', '.JPG', '.PIC', '.PNG', '.TIF', '.JPEG', '.PHP', '.webp']
 
 htmlExt = ['.html', '.htm', '.HTML', '.HTM']
 
@@ -145,10 +144,10 @@ def image_upload(request):
         if form.is_valid():            
             # 保存上传的图像文件。保存路径分别由settings.py和models.py设置
             form.save() 
-    """ 获得数据库最后一条记录的image """
+    #获得数据库最后一条记录的image
     if Course.objects.filter().count():                    
         imageURL = Course.objects.filter(id=Course.objects.filter().last().id).first().image
-    
+    #图片验证文件在： js/plugins/jquery.upload1.js
     return render(request, 'blog/image_upload.html', context=locals())
 
 # 数据库显示图像

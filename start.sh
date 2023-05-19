@@ -20,7 +20,7 @@ function build_venv {
     pip3 install -r requirements.txt
 }
 
-# 这样删除数据库，不够理想 2021.10.11??????
+# 这样删除数据库，不够理想 2021.10.11
 #logging "Clean"
 #rm -rf "db.sqlite3"
 #以下不显示db.sqlite3了，但db.sqlite3实际并没有删除 
