@@ -23,6 +23,6 @@ python3.7.5
 
 ```
 1、上传单个文件,本地运行，显示图像目录../static_common/img， 部署后显示图像目录../static/img
-2、数据库上传图像，图片验证文件在： ../static_common/js/plugins/jquery.upload1.js
- 2023.05.18 
+2、数据库上传图像，图片文件验证文件在： ../static_common/js/plugins/jquery.upload1.js
+ 2023.05.19 
 ```
